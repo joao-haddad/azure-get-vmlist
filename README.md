@@ -3,17 +3,16 @@ Python script to get Azure's VM list and performance metrics
 
 How to use:
 
-- It is best to create a virtual environment:
+- Optional - Create a virtual environment and activate it:
 
 `python3 -m venv .venv`
+(activation is OS dependent: https://docs.python.org/3/library/venv.html)
+
 
 - Install all the requirements:
 
 `pip install -r requirements.txt`
 
-- Edit the main.py and replace the subscription_id with your own:
-
-`SUBSCRIPTION_ID = "xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"`
 
 - Make sure you have the AZURE CLI installed: https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
 
@@ -23,6 +22,4 @@ How to use:
 
 `python3 main.py`
 
-- The tool will generate two files:
-    1) savedmetricsdata.bin
-    2) savedvmlistdata.bin
+- The tool will generate one file:  saveddata.bin.lzma
