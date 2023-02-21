@@ -124,7 +124,7 @@ print("\nPerformance Metrics finished")
 # Collect Reservation metrics
 
 sub_client = SubscriptionClient(credential)
-saveddata = {}
+
 try:
     reservationclient = AzureReservationAPI(credential)
     saveddata["reservation"] = [
