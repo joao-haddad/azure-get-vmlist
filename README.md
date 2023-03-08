@@ -22,4 +22,5 @@ How to use:
 
 `python3 main.py`
 
-- The tool will generate one file:  saveddata.bin.lzma
+- The tool will generate one file:  "azure{date}{uuid}.json.xz"
+- (Example: azure20230308-14d51e5d.json.xz")

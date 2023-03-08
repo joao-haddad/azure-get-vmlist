@@ -16,7 +16,8 @@ from azure.mgmt.monitor import MonitorManagementClient
 from azure.mgmt.reservations import AzureReservationAPI
 from azure.mgmt.subscription import SubscriptionClient
 
-FILENAME = "saveddata.bin.lzma"
+FILEPREFIX = "azure"
+FILEEXTENSION = ".json.xz"
 VERSION = 3
 METRICS_TO_READ = ["Percentage CPU", "Available Memory Bytes"]
 
@@ -146,14 +147,18 @@ saveddata["id"] = str(uuid.uuid4())
 saveddata["customer_name"] = company_name
 saveddata["csp"] = "Azure"
 
+filename = (
+    FILEPREFIX + today.strftime("%Y%m%d") + "-" + saveddata["id"][-8:] + FILEEXTENSION
+)
+print(filename)
 # Save to the directory
 try:
-    with lzma.open(FILENAME, "wt", encoding="ascii") as f:
+    with lzma.open(filename, "wt") as f:
         json.dump(saveddata, f, default=str)
 except lzma.LZMAError as e:
-    print(f'Error saving file "{FILENAME}". Error = {e}')
+    print(f'Error saving file "{filename}". Error = {e}')
     sys.exit()
 except json.JSONDecodeError as exception:
     print(f"Error: {exception}")
     sys.exit()
-print(f'Report saved successfully to "{FILENAME}"')
+print(f'Report saved successfully to "{filename}"')
